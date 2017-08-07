@@ -1,7 +1,9 @@
-*These notes are compiled from the facebook documentation for react*
-[facebook docs](https://facebook.github.io/react/docs/hello-world.html)
-</hr>
+*These notes are compiled from the facebook documentation for react* [facebook docs](https://facebook.github.io/react/docs/hello-world.html)
+
+
+
 # REACT NOTES:
+
 ## React components elements and instances :
 
 
@@ -325,6 +327,5 @@ Finally, to create elements, use:
 
 *Don’t write elements as plain objects in the real code—just know that they are plain objects under the hood.*
 
-<hr/>
 ####  Note:
 *All React elements require an additional `$$typeof: Symbol.for('react.element')` field declared on the object for security reasons. It is omitted in the examples above. This  entry uses inline objects for elements to give you an idea of what’s happening underneath but the code won’t run as is unless you either add $$typeof to the elements, or change the code to use React.createElement() or JSX.*
