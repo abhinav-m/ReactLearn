@@ -1,0 +1,22 @@
+{
+  "name": "react-without-cli",
+  "version": "1.0.0",
+  "description": "Learning react without using create-react-app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack -d --watch",
+     "build": "webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhinav Mishra",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "webpack": "^3.5.5"
+  }
+}
