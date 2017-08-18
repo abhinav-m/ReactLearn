@@ -1,9 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
+import {Button} from 'react-bootstrap';
 
 class App extends React.Component {
     render() {
-        return <p> Hello React! </p>;
+        return (<div>
+        <p> Hello React! </p>;
+        <Button> Test </Button>
+        </div>
+        )
     }
 }
 
