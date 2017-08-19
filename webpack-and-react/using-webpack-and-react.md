@@ -104,6 +104,48 @@ The configuration above has defined a` rules` property for a single module with 
 >"Hey webpack compiler, when you come across a path that resolves to a '.txt' file inside of a require()/import statement, use the raw-loader to transform it before you add it to the bundle."
 It is important to remember that when defining rules in your webpack config, you are defining them under module.rules and not rules. For your benefit, webpack will 'yell at you' if this is done incorrectly.
 
+### Plugins
+
+While `Loaders` only execute transforms on a per-file basis, plugins are most commonly used to perform actions and custom functionality on "compilations" or "chunks" of your bundled modules (and so much more!). The webpack Plugin system is extremely powerful and customizable.
+
+In order to use a plugin, you just need to `require()` it and add it to the **plugins array**.
+
+ Most plugins are customizable via options. 
+ 
+ *Since you can use a plugin multiple times in a config for different purposes, you need to **create an instance** of it by calling it with `new`.*
+
+```javascript
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//Load the plugin here, note it must be installed using npm.
+
+var BUILD_DIR = path.resolve(__dirname,'src/client/app');
+var APP_DIR = path.resolve(__dirname,'src/dist/');
+
+module.exports = {
+
+entry:  BUILD_DIR + '/index.jsx',
+output: {
+filename: 'bundle.js',
+path: APP_DIR
+},
+module: {
+loaders: [
+{test: /\.jsx?/,
+include:BUILD_DIR,
+loader:'babel-loader'} 
+]
+},
+plugins : [
+new webpack.optimize.UglifyJsPlugin(), //bundled with webpack no need to explicitly install, still create instance.
+new HtmlWebpackPlugin() //Create instance, this creates html file for you.
+]
+};
+```
+
+There are many plugins that webpack provides out of the box! 
+
 
 
 
