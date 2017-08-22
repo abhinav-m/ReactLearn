@@ -33,9 +33,7 @@ class App extends Component {
       <div>
      <header>{this.state.err} </header>
      <div className='container'>
-     <textarea 
-     onChange ={this.update.bind(this)}
-     defaultValue= {this.state.input} />
+     <textarea  onChange ={this.update.bind(this)} placeholder = {this.state.input} />   
      <pre>
        {this.state.output}
      </pre>
