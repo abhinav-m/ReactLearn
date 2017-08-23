@@ -3,9 +3,9 @@
 There are several different things which should be taken into consideration when specifiying props and children in JSX.
 
 
-##Props in JSX
+## Props in JSX
 
-###JavaScript Expressions as Props
+### JavaScript Expressions as Props
 You can pass any JavaScript expression as a prop, by surrounding it with `{}`. For example, in this JSX:
 
 
@@ -30,7 +30,7 @@ function NumberDescriber(props) {
 ```
 
 
-###String Literals
+### String Literals
 You can pass a string literal as a prop. These two JSX expressions are equivalent:
 ```
 <MyComponent message="hello world" />
@@ -47,7 +47,7 @@ When you pass a string literal, **its value is HTML-unescaped**. So these two JS
 ```
 This behavior is usually not relevant. 
 
-###Props Default to "True"
+### Props Default to "True"
 **If you pass no value for a prop, it defaults to true.** These two JSX expressions are equivalent:
 
 ```
@@ -59,7 +59,7 @@ This behavior is usually not relevant.
 In general, this is not recommended, because it can be confused with the ES6 object shorthand `{foo}` which is short for `{foo: foo}` rather than `{foo: true}`.
 This behavior is just there so that it matches the behavior of HTML.
 
-###Spread Attributes
+### Spread Attributes
 If you already have props as an `object`, and you want to pass it in JSX, you can use`...` as a "spread" operator to pass the whole props object. These two components are equivalent:
 ```
 function App1() {
@@ -74,12 +74,12 @@ function App2() {
 ```
 Spread attributes can be useful when you are building generic containers. However, they can also make your code messy by making it easy to pass a lot of irrelevant props to components that don't care about them. Recommended to use sparingly.
 
-##Children in JSX
+## Children in JSX
 In JSX expressions that **contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: `props.children`.**
 
  There are several different ways to pass children:
 
-###String Literals
+### String Literals
 You can put a string between the opening and closing tags and `props.children `will just be that string. This is useful for many of the built-in HTML elements. 
 
 For example:
@@ -114,7 +114,7 @@ JSX removes whitespace at the beginning and ending of a line.
   Hello World
 </div>
 ```
-###JSX Children
+### JSX Children
 You can provide more JSX elements as the children. This is useful for displaying nested components:
 ```
 <MyContainer>
@@ -137,7 +137,7 @@ This is another way in which JSX is like HTML, so that this is both valid JSX an
 ```
 **A React component can't return multiple React elements, but a single JSX expression can have multiple children, so if you want a component to render multiple things you can wrap it in a div** like the above.
 
-###JavaScript Expressions as Children
+### JavaScript Expressions as Children
 You can pass any JavaScript expression as children, by enclosing it within `{}`. For example, these expressions are equivalent:
 ```
 <MyComponent>foo</MyComponent>
@@ -168,7 +168,7 @@ function Hello(props) {
   return <div>Hello {props.addressee}!</div>;
 }
 ```
-###Functions as Children
+### Functions as Children
 Normally, JavaScript expressions inserted in **JSX will evaluate to a string, a React element, or a list of those things.**
 
 However, `props.children` works just like any other prop in that it can pass any sort of data, not just the sorts that React knows how to render. For example, if you have a custom component, you could have it take a callback as `props.children`:
@@ -194,7 +194,7 @@ Children passed to a custom component can be anything, as long as that component
 
 This usage is not common, but it works if you want to stretch what JSX is capable of.
 
-###Booleans, Null, and Undefined Are Ignored
+### Booleans, Null, and Undefined Are Ignored
 `false`, `null`, `undefined`, and `true` are valid children.
  They simply don't render. These JSX expressions will all render to the same thing:
 ```
