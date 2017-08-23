@@ -238,13 +238,12 @@ class Button extends React.Component {
   }
 }
 ```
-**Points to note: **
+**Points to note:**
 > When a component is defined as a `class`, it is a little bit more powerful than a functional component. **It can store some local state and perform custom logic when the corresponding DOM node is created or destroyed.**
 
 > A functional component is less powerful but is simpler, and acts like a class component with just a single render() method. Unless you need features available only in a class, we encourage you to use functional components instead.
 
-** However, whether functions or classes, fundamentally they are all components to React. They take the props as their input, and return the elements as their output.
-**
+**However, whether functions or classes, fundamentally they are all components to React. They take the props as their input, and return the elements as their output.**
 
 ### Top down reconciliation:
 
