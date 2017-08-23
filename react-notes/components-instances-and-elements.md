@@ -65,20 +65,16 @@ However, the `type` of an element can also be a function or a class correspondin
 _**An element describing a component is also an element, just like an element describing the DOM node. They can be nested and mixed with each other.**_
 
 This feature lets you define a DangerButton component as a Button with a specific color property value without worrying about whether Button renders to a DOM `<button>`, a `<div>`, or something else entirely:
+
 ```javascript
 const DeleteAccount = () => ({
   type: 'div',
   props: {
-    children: # REACT NOTES:
-## React components elements and instances :
+    children: 
+```
 
 
-**Elements** :An element is a plain `object` describing a component instance or DOM node and its desired properties. 
 
-It contains only information about the component type (for example, a `Button`), its properties (for example, its color), and any child elements inside it.
-
-
-An element is not an actual instance. Rather, it is a way to tell React what you want to see on the screen. You can’t call any methods on the element. It’s just an immutable description object with two fields: `type: (string | ReactClass)` and props: `Object1`
 
 ### DOM Elements:
 
@@ -106,7 +102,9 @@ This element is just a way to represent the following HTML as a plain object:
   </b>
 </button>
 ```
-Note how elements can be nested. By convention, when we want to create an element tree[{
+Note how elements can be nested. By convention, when we want to create an element tree
+```
+[{
       type: 'p',
       props: {
         children: 'Are you sure?'
