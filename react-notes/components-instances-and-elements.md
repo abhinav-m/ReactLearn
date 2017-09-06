@@ -298,7 +298,7 @@ By the end of the reconciliation, React knows the **result DOM tree**, and a ren
 
 You might have noticed that this  entry talks a lot about components and elements, and not so much about the instances. The truth is, instances have much less importance in React than in most object-oriented UI frameworks.
 
-**Only components declared as classes have instances, and you never create them directly:** *React does that for you. *
+**Only components declared as classes have instances, and you never create them directly:**  *React does that for you.*
 
 **While mechanisms for a parent component instance to access a child component instance exist, they are only used for imperative actions (such as setting focus on a field), and should generally be avoided.**
 
@@ -320,7 +320,7 @@ React takes care of creating an instance for every class component, so you can w
 Finally, to create elements, use:
 *  **React.createElement()**,
 *  **`JSX`**, or 
-** an element factory helper. **
+* **an element factory helper.**
 
 *Don’t write elements as plain objects in the real code—just know that they are plain objects under the hood.*
 
