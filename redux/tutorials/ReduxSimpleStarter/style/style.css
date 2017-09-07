@@ -1,3 +1,14 @@
+.container {
+    font-size: 18px;
+    font-family: 'Archivo Narrow', sans-serif;
+}
+
+.elegant-font {
+    font-size: 3em;
+    color: purple;
+    font-family: 'Amatic SC', cursive;
+}
+
 .search-bar {
     margin: 20px;
     text-align: center;
@@ -24,4 +35,17 @@
 
 .list-group-item:hover {
     background: #eee;
+}
+
+p,
+h1 {
+    margin: 15px;
+    text-align: center;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

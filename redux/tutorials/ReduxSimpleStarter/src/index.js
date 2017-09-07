@@ -21,8 +21,6 @@ class App extends Component {
         };
 
     this.videoSearch('surfboards');
-   
-
   
     }
 
@@ -38,11 +36,14 @@ class App extends Component {
         const videoSearch = _.debounce( term => {this.videoSearch(term)},300 )
   return (
     <div > 
+        <h1 className='elegant-font'> SimpleTube </h1>
          <SearchBar onSearchTermChange = { videoSearch }/>
+        <div className = 'row'>
          <VideoDetail video = {this.state.selectedVideo} />
          <VideoList
           onVideoSelect = { selectedVideo => this.setState( {selectedVideo} ) }
           videos={this.state.videos}/>
+        </div>
     </div>
     );
     }
