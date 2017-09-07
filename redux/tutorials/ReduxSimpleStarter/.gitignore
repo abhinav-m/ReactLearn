@@ -1,2 +1,2 @@
-#No need to include node_modules. can be generated via npm install.
+# No need to include node_modules. can be generated via npm install.
 /node_modules
