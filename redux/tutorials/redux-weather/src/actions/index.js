@@ -11,6 +11,9 @@ export function fetchWeather(city) {
   const request = axios.get(url);
   console.log('Request:',request);
 
+//Redux promise middleware sees the incoming payload, since it's a promise,
+//it stops the action and once the promise is fulfilled, it resolves the promise
+//and returns the resolved value of the promise to the reducers.
   return {
     type: FETCH_WEATHER,
     payload: request
