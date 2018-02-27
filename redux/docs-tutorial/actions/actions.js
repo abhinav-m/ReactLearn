@@ -57,7 +57,48 @@ export function fetchPosts(subreddit) {
     //this  can be passed on as return value of the dispatch method.
 
     //In this case, we return a promise to wait for.
+    return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+           .then(
+             response => response.json(),
+             error => console.log('Error occurred',error)
+           )
+           .then(json =>
+             //We can dispatch many times.
+             //Here we update the app state with results of the new API call.
 
+             dispatch(receivePosts(subreddit,json));
+           )
+
+  }
+
+  function shouldFetchPosts(state,subreddit) {
+    const  posts = state.postsBySubreddit[subreddit];
+    if(!posts) {
+      return true
+    } else if (posts.isFetching) {
+      return false;
+    }
+      else {
+        return posts.didInvalidate
+      }
+  }
+
+  export function  fetchPostsIfNeeded(subreddit) {
+    //Using redux thunk, we also recieve getState()
+    //using which we can choose what to dispatch next.
+
+    //This is useful for avoiding a network request if cached
+    //value is already available.
+
+    return (dispatch, getState) => {
+      if( shouldFetchPosts(getState(),subreddit) ){
+        //Dispatching a thunk from a Thunk
+        return dispatch(fetchPosts(subreddit))
+      } else {
+        //Let calling code know there is nothing to wait for.
+        return Promise.resolve();
+      }
+    }
   }
 
 }
