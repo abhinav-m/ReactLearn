@@ -65,7 +65,6 @@ export function fetchPosts(subreddit) {
            .then(json =>
              //We can dispatch many times.
              //Here we update the app state with results of the new API call.
-
              dispatch(receivePosts(subreddit,json));
            )
 
