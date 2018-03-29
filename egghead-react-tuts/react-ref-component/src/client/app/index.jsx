@@ -12,17 +12,19 @@ class App extends React.Component {
     this.state = { a: '', b: '' };
   }
 
-  /*    a:this.refs.a.value,
-            b:this.refs.b.value,
-            When we use refs like this,
-            it returns the node.
-            Thus we are referencing the node directly.
+  /*      
+  a:this.refs.a.value,
+  b:this.refs.b.value,
+  When we use refs like this,
+  it returns the node.
+  Thus we are referencing the node directly.
 
-            a:this.a.value, <- when we are referencing a node.
-            a:ReactDOM.findDOMNode(this.a).value, //here we are finding the dom node from the component and then using it's value.
-            This wont work when the component wraps the node we want to access in another DOM node.
-            To overcome this,
-            */
+  a:this.a.value, <- when we are referencing a node.
+  a:ReactDOM.findDOMNode(this.a).value, 
+  //Above we are finding the dom node from the component and then using it's value.
+  This wont work when the component wraps the node we want to access in another DOM node.
+  To overcome this,
+  */
 
   update(e) {
     this.setState({
