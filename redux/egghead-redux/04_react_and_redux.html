@@ -2,68 +2,67 @@
 <html>
 
 <head>
-
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/redux/3.7.2/redux.js'></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 </head>
 
 <body>
     <div id='root'></div>
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/redux/3.7.2/redux.js'></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-core/6.1.19/browser.min.js'></script>
-    <script type='babel/text'>
-
-        const counterReducer = (state = 0, action) => {
-            switch (action.type) {
-              case 'INCREMENT':
-                return state + 1;
-              case 'DECREMENT':
-                return state - 1;
-              default:
-                return state;
-            }
-          }
-          //Destructure createStore function from redux;
-          const { createStore } = Redux; 
-         
-          //Create store based on the simple reducer above.
-          const store = createStore(counterReducer)
+    <script type='text/babel'>
+    //Simple reducer for counter.
+    const counterReducer = (state = 0, action) => {
+    switch (action.type) {
+      case 'INCREMENT':
+        return state + 1;
+      case 'DECREMENT':
+        return state - 1;
+      default:
+        return state;
+    }
+  }
+  //Destructure createStore function from redux;
+  const { createStore } = Redux; 
+ 
+  //Create store based on the simple reducer above.
+  const store = createStore(counterReducer)
 
 
 
+//JSX for Counter element.
+const Counter = (
+    props
+) => {
+    return(
+    <div>
+        <h1>{props.value}</h1>
+        <button onClick ={props.onIncrement}>+</button>
+        <button onClick ={props.onDecrement}>-</button>
+    </div>
+);}
 
-        const Counter = ({
-            value,
-            onIncrement,
-            onDecrement
-        }) => (
-            <div>
-                <h1>{value}</h1>
-                <button onclick ={onIncrement}>+</button>
-                <button onclick ={onDecrement}>-</button>
-            </div>
-        );
+//Render function which subscribes to the store.
 
-        const render = () => {
-            ReactDOM.render(
-                <Counter 
-                value={store.getState()}
-                onIncrement={() => store.dispatch({
-                    type:'INCREMENT'
-                })
-                }
-                onDecrement={() => store.dispatch({
-                    type:'DECREMENT'
-                })
-                }
-          />,
-          document.getElementById('root'))
+const render = () => {
+    ReactDOM.render(
+        <Counter 
+        value={store.getState()}
+        onIncrement={() => store.dispatch({
+            type:'INCREMENT'
+        })
         }
+        onDecrement={() => store.dispatch({
+            type:'DECREMENT'
+        })
+        }
+  />,
+  document.getElementById('root'))
+}
 
-        store.subscribe(render);
-        render();
+//Subscribe the render function to the store, on state change this is called.
+store.subscribe(render);
+render();
 
     </script>
 </body>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/redux/3.7.2/redux.js'></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id='root'></div>
+    <script type='text/babel'>
+
+
+
+    //While arrays work for storing state for small applications , objects can be used to store more information.
+
+
+//Individual todo reducer.
+    const todo = (state  ,action) => {
+
+switch(action.type) {
+
+    case 'ADD_TODO':
+    return {
+        id:action.id,
+        text:action.text,
+        completed:false
+    };
+
+    case 'TOGGLE_TODO':
+    return {
+        if(state.id !== action.id) {
+            return state;
+        }
+        return {
+            ...state,
+            completed:!state.completed
+        }
+    }
+    default:
+    return state;
+}
+
+}
+
+const todos = (state=[],action) => {
+    switch(action.type) {
+        case 'ADD_TODO': 
+        return [
+            ...state,
+            //Pass the creation of todo to a different reducer, reducer composition
+            todo(undefined,action)
+        ];
+
+        case 'TOGGLE_TODO':
+        return state.map( t => todo(t,action))
+
+        default:
+        return state;
+    }
+}
+
+//A simple reducer for setting visibility of todos
+    const visibilityFilter = (
+        state= 'SHOW_ALL',
+        action
+    ) => {
+        switch(action.type){
+            case 'SET_VISIBILITY_FILTER':
+            return action.filter;
+            default:
+            return state;
+        }
+    };
+
+/*
+Combining reducer into one reducer
+Note: When this is called for the first time,
+undefined will be passed to all the reducers 
+inside it, which will cause them to return their
+default case inside switch, and populate initial state. */
+
+    const todoApp = (state = {} , action) => {
+        return {
+            todos:todos(
+                state.todos,
+                action
+            ),
+            visibilityFilter: visibilityFilter(
+                state.visibilityFilter,
+                action
+            )
+        }
+    }
+
+
+
+
+  //Destructure createStore function from redux;
+  const { createStore } = Redux; 
+
+const store = createStore(todoApp);
+    </script>
+</body>
+
+</html>
